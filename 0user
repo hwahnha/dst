@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#사용자 추가
+su -c "sudo adduser steam"
+echo "steam:root" | sudo chpasswd
