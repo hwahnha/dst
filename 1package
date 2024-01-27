@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo dpkg --add-architecture i386
+sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get autoremove --purge -y && sudo apt-get autoclean
+sudo apt-get install lib32gcc1 -y
+sudo apt-get install lib32stdc++6 -y
+sudo apt-get install libcurl4-gnutls-dev:i386 -y
+sudo apt-get install wget screen tar -y
