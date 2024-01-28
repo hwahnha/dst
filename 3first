@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# cluster_1_master.sh 스크립트에 실행 권한 부여 및 소유권 변경
+sudo chmod 700 cluster_1_master.sh
+sudo chown steam:steam cluster_1_master.sh
+
+# cluster_1_master.sh 실행
+sudo ./cluster_1_master.sh
+
+# 서버 정지 명령 (c_shutdown)
+c_shutdown()
+
+# cluster_1_caves.sh 스크립트에 실행 권한 부여 및 소유권 변경
+sudo chmod 700 cluster_1_caves.sh
+sudo chown steam:steam cluster_1_caves.sh
+
+# cluster_1_caves.sh 실행
+sudo ./cluster_1_caves.sh
+
+# 서버 정지 명령 (c_shutdown)
+c_shutdown()
