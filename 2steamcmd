@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# SteamCMD 디렉터리 생성 및 이동
+mkdir -p steamcmd
+cd steamcmd
+
+# SteamCMD 설치 및 압축 해제
+wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz &&
+tar -xvzf steamcmd_linux.tar.gz
+
+# DST 서버 설치
+./steamcmd.sh +login anonymous +force_install_dir ./steamapps/DST +app_update 343050 validate +quit
+
+# 스크립트 파일 생성 및 실행 권한 부여
+cat << EOF > update_dst.sh
+#!/bin/sh
+/home/steam/steamcmd/steamcmd.sh +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir ~/steamapps/DST +app_update 343050 validate +quit
+EOF
+
+chmod 700 update_dst.sh
+chown steam:steam update_dst.sh
+bash update_dst.sh
+
+# Master 서버 스크립트 생성
+# cluster_1_master.sh 스크립트 생성
+cat << EOF > cluster_1_master.sh
+#!/bin/sh
+cd /home/steam/steamapps/DST/bin && /usr/bin/screen -S "DST_Master" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Master'
+EOF
+
+# Caves 서버 스크립트 생성
+# cluster_1_caves.sh 스크립트 생성
+cat << EOF > cluster_1_caves.sh
+#!/bin/sh
+cd /home/steam/steamapps/DST/bin && /usr/bin/screen -S "DST_Caves" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Caves'
+EOF
+
+# 스크립트 파일에 실행 권한 부여
+chmod +x cluster_1_master.sh
+chmod +x cluster_1_caves.sh
