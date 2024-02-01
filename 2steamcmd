@@ -13,6 +13,8 @@ echo "steamCMD 설치 완료"
 ./steamcmd.sh +login anonymous +force_install_dir ./steamapps/DST +app_update 343050 validate +quit
 echo "DST서버 설치 완료"
 
+cd
+
 # 스크립트 파일 생성 및 실행 권한 부여
 cat << EOF > update_dst.sh
 #!/bin/sh
