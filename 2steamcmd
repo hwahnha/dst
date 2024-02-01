@@ -32,7 +32,7 @@ bash update_dst.sh
 # cluster_1_master.sh 스크립트 생성
 cat << EOF > cluster_1_master.sh
 #!/bin/sh
-cd /home/steam/steamapps/DST/bin && /usr/bin/screen -S "DST_Master" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Master'
+cd /home/steam/steamapps/DST/bin && /usr/bin/screen -dmS "DST_Master" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Master'
 EOF
 echo "지상 스크립트 생성"
 
@@ -40,7 +40,7 @@ echo "지상 스크립트 생성"
 # cluster_1_caves.sh 스크립트 생성
 cat << EOF > cluster_1_caves.sh
 #!/bin/sh
-cd /home/steam/steamapps/DST/bin && /usr/bin/screen -S "DST_Caves" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Caves'
+cd /home/steam/steamapps/DST/bin && /usr/bin/screen -dmS "DST_Caves" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Caves'
 EOF
 
 # 스크립트 파일에 실행 권한 부여
