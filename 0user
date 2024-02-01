@@ -3,3 +3,4 @@
 #사용자 추가
 su -c "sudo adduser steam"
 echo "steam:root" | sudo chpasswd
+#echo "steam ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
