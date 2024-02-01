@@ -7,18 +7,23 @@ cd steamcmd
 # SteamCMD 설치 및 압축 해제
 wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz &&
 tar -xvzf steamcmd_linux.tar.gz
+echo "steamCMD 설치 완료"
 
 # DST 서버 설치
 ./steamcmd.sh +login anonymous +force_install_dir ./steamapps/DST +app_update 343050 validate +quit
+echo "DST서버 설치 완료"
 
 # 스크립트 파일 생성 및 실행 권한 부여
 cat << EOF > update_dst.sh
 #!/bin/sh
 /home/steam/steamcmd/steamcmd.sh +@ShutdownOnFailedCommand 1 +@NoPromptForPassword 1 +login anonymous +force_install_dir ~/steamapps/DST +app_update 343050 validate +quit
 EOF
+echo "업데이트 스크립트 작성 완료"
 
-chmod 700 update_dst.sh
+chmod 744 update_dst.sh
+echo "업데이트 스크립트 권한 부여됨"
 chown steam:steam update_dst.sh
+echo "업데이트 스크립트 소유권 변경됨"
 bash update_dst.sh
 
 # Master 서버 스크립트 생성
@@ -27,6 +32,7 @@ cat << EOF > cluster_1_master.sh
 #!/bin/sh
 cd /home/steam/steamapps/DST/bin && /usr/bin/screen -S "DST_Master" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Master'
 EOF
+echo "지상 스크립트 생성"
 
 # Caves 서버 스크립트 생성
 # cluster_1_caves.sh 스크립트 생성
