@@ -28,21 +28,4 @@ chown steam:steam update_dst.sh
 echo "업데이트 스크립트 소유권 변경됨"
 bash update_dst.sh
 
-# Master 서버 스크립트 생성
-# cluster_1_master.sh 스크립트 생성
-cat << EOF > cluster_1_master.sh
-#!/bin/sh
-cd /home/steam/steamapps/DST/bin && /usr/bin/screen -dmS "DST_Master" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Master'
-EOF
-echo "지상 스크립트 생성"
 
-# Caves 서버 스크립트 생성
-# cluster_1_caves.sh 스크립트 생성
-cat << EOF > cluster_1_caves.sh
-#!/bin/sh
-cd /home/steam/steamapps/DST/bin && /usr/bin/screen -dmS "DST_Caves" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_1 -shard Caves'
-EOF
-
-# 스크립트 파일에 실행 권한 부여
-chmod +x cluster_1_master.sh
-chmod +x cluster_1_caves.sh
