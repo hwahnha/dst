@@ -1,0 +1,5 @@
+#!/bin/bash
+read -p "Enter the mod numberID to add: " MODID
+
+echo "ServerModSetup(\"${MODID}\")" >> ~/steamapps/DST/mods/dedicated_server_mods_setup.lua
+echo "Mod ${MODID} has been added successfully."
