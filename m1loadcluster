@@ -3,4 +3,3 @@
 read -p "Enter the server name: " CLUSTER_NUMBER
 
 sudo cp -R /home/rsa/download/Cluster_${SERVER_NAME} /home/steam/.klei//DedicatedServer
-
