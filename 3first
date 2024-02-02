@@ -5,7 +5,7 @@ sudo chmod 700 cluster_1_master.sh
 sudo chown steam:steam cluster_1_master.sh
 
 # cluster_1_master.sh 실행
-sudo ./cluster_1_master.sh
+bash cluster_1_master.sh
 
 # 서버 정지 명령 (c_shutdown)
 screen -S DST_Master -X stuff 'c_shutdown()^M'
@@ -15,7 +15,7 @@ sudo chmod 700 cluster_1_caves.sh
 sudo chown steam:steam cluster_1_caves.sh
 
 # cluster_1_caves.sh 실행
-sudo ./cluster_1_caves.sh
+bash cluster_1_caves.sh
 
 # 서버 정지 명령 (c_shutdown)
 screen -S DST_Caves -X stuff 'c_shutdown()^M'
