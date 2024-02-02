@@ -1,21 +1,24 @@
+#!/bin/bash
 
+read -p "Enter the Cluster_number: " CLUSTER_NUMBER
 
-# cluster_1_master.sh 스크립트에 실행 권한 부여 및 소유권 변경
-sudo chmod 700 cluster_1_master.sh
-sudo chown steam:steam cluster_1_master.sh
+# cluster_${CLUSTER_NUMBER}_master.sh 스크립트에 실행 권한 부여 및 소유권 변경
+sudo chmod 700 cluster_${CLUSTER_NUMBER}_master.sh
+sudo chown steam:steam cluster_${CLUSTER_NUMBER}_master.sh
 
-# cluster_1_master.sh 실행
-bash cluster_1_master.sh
+# cluster_${CLUSTER_NUMBER}_master.sh 실행
+bash cluster_${CLUSTER_NUMBER}_master.sh
 
 # 서버 정지 명령 (c_shutdown)
 screen -S DST_Master -X stuff 'c_shutdown()^M'
 
-# cluster_1_caves.sh 스크립트에 실행 권한 부여 및 소유권 변경
-sudo chmod 700 cluster_1_caves.sh
-sudo chown steam:steam cluster_1_caves.sh
+# cluster_${CLUSTER_NUMBER}_caves.sh 스크립트에 실행 권한 부여 및 소유권 변경
+sudo chmod 700 cluster_${CLUSTER_NUMBER}_caves.sh
+sudo chown steam:steam cluster_${CLUSTER_NUMBER}_caves.sh
 
-# cluster_1_caves.sh 실행
-bash cluster_1_caves.sh
+# cluster_${CLUSTER_NUMBER}_caves.sh 실행
+bash cluster_${CLUSTER_NUMBER}_caves.sh
 
 # 서버 정지 명령 (c_shutdown)
 screen -S DST_Caves -X stuff 'c_shutdown()^M'
+
