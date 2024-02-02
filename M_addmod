@@ -3,3 +3,17 @@ read -p "Enter the mod numberID to add: " MODID
 
 echo "ServerModSetup(\"${MODID}\")" >> ~/steamapps/DST/mods/dedicated_server_mods_setup.lua
 echo "Mod ${MODID} has been added successfully."
+
+
+#추가될 내용 : 모드 존재여부 확인
+#존재할 경우 모드 이름 출력 (웹 페이지에서 정보 확인 : 모드 타이틀, 파일 사이즈, 출시일)
+#모드 숫자ID 다음에 주석처리를 통해 추가정보 기재 (타이틀,출시일,사이즈)
+#
+#
+#
+#
+#
+#
+#
+#
+#
