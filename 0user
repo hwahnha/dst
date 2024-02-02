@@ -3,4 +3,9 @@
 #사용자 추가
 su -c "sudo adduser steam"
 echo "steam:root" | sudo chpasswd
-#echo "steam ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
+echo "steam ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
+
+
+read -p "Enter origin user name: " ORG
+cp -R /home/${ORG}/dst /home/steam/
+
