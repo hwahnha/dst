@@ -32,7 +32,15 @@ chmod +x cluster_${CLUSTER_NUMBER}_master.sh
 chmod +x cluster_${CLUSTER_NUMBER}_caves.sh
 
 
+#두 서버 여는 클러스터 생성
 
+cat << EOF > steart${CLUSTER_NUMBER}.sh
+#!/bin/sh
+bash cluster_${CLUSTER_NUMBER}_master.sh
+bash cluster_${CLUSTER_NUMBER}_caves.sh
+EOF
+
+chmod +x steart${CLUSTER_NUMBER}.sh
 
 
 
