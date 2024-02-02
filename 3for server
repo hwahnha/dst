@@ -12,6 +12,9 @@ cat << EOF > cluster_${CLUSTER_NUMBER}_master.sh
 cd /home/steam/steamapps/DST/bin && /usr/bin/screen -dmS "DST_Master" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_${CLUSTER_NUMBER} -shard Master'
 EOF
 echo "${CLUSTER_NUMBER}번 지상 완료"
+sudo chown steam:steam cluster_${CLUSTER_NUMBER}_master.sh
+sudo chmod 700 cluster_${CLUSTER_NUMBER}_master.sh
+
 
 # 지하 서버 구동 스크립트 작성
 # cluster_${CLUSTER_NUMBER}_caves.sh 스크립트 생성
@@ -20,8 +23,16 @@ cat << EOF > cluster_${CLUSTER_NUMBER}_caves.sh
 cd /home/steam/steamapps/DST/bin && /usr/bin/screen -dmS "DST_Caves" /bin/sh -c './dontstarve_dedicated_server_nullrenderer -backup_logs -conf_dir DedicatedServer -cluster Cluster_${CLUSTER_NUMBER} -shard Caves'
 EOF
 echo "${CLUSTER_NUMBER}번 지하 완료"
+sudo chown steam:steam cluster_${CLUSTER_NUMBER}_caves.sh
+sudo chmod 700 cluster_${CLUSTER_NUMBER}_caves.sh
 
 
 # 두 스크립트 파일에 실행 권한 부여
 chmod +x cluster_${CLUSTER_NUMBER}_master.sh
 chmod +x cluster_${CLUSTER_NUMBER}_caves.sh
+
+
+
+
+
+
