@@ -7,5 +7,5 @@ echo "steam ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
 
 
 read -p "Enter origin user name: " ORG
-cp -R /home/${ORG}/dst /home/steam/
+sudo cp -R /home/${ORG}/dst /home/steam/
 
