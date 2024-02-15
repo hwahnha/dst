@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# SteamCMD 경로 설정
+STEAMCMD_PATH="/home/steam/steamcmd/steamcmd.sh"
+
+# appmanifest 파일 경로 설정
+MANIFEST_PATH="/home/steam/steamapps/DST/steamapps/appmanifest_343050.acf"
+
+# SteamCMD를 사용하여 최신 버전의 buildid 조회
+LATEST_BUILD_ID=$($STEAMCMD_PATH +login anonymous +app_info_print 343050 +quit | grep "buildid" | awk '{print $2}' | head -1 | tr -d '"')
+
+# appmanifest 파일에서 현재 설치된 버전의 buildid 추출
+CURRENT_BUILD_ID=$(grep "buildid" "$MANIFEST_PATH" | awk '{print $2}' | tr -d '"')
+
+# 버전 비교
+if [ "$LATEST_BUILD_ID" == "$CURRENT_BUILD_ID" ]; then
+    echo "서버가 최신 상태입니다: 현재 버전($CURRENT_BUILD_ID)."
+else
+    echo "업데이트 필요: 현재 버전($CURRENT_BUILD_ID)이 최신 버전($LATEST_BUILD_ID)보다 오래됨."
+fi
